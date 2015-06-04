@@ -1,0 +1,23 @@
+{
+  "name": "asmbs/wp-wistia-api",
+  "type": "wordpress-plugin",
+  "license": "MIT",
+  "description": "WordPress plugin that integrates the Wistia APIs",
+  "homepage": "https://github.com/asmbs/wp-wistia-api",
+  "authors": [
+    {
+      "name": "Kyle Tucker",
+      "email": "kyleatucker@gmail.com",
+      "homepage": "https://github.com/friartuck6000"
+    }
+  ],
+  "keywords": [
+    "wordpress", "plugin", "wistia", "api"
+  ],
+  "support": {
+    "issues": "https://github.com/asmbs/wp-wistia-api/issues"
+  },
+  "require": {
+    "php": ">=5.4"
+  }
+}
