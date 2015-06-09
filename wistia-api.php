@@ -20,7 +20,7 @@ class PluginCore
   /**
    * @var  Admin\SettingsManager  Plugin settings manager.
    */
-  protected $settings;
+  protected $settingsManager;
 
   // -------------------------------------------------------------------------------------------
 
@@ -40,7 +40,7 @@ class PluginCore
    */
   private function init()
   {
-    $this->settings = new Admin\SettingsManager();
+    $this->settingsManager = new Admin\SettingsManager();
   }
 }
 
