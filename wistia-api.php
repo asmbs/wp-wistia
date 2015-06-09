@@ -35,6 +35,9 @@ class PluginCore
     $this->init();
   }
 
+  /**
+   * Initialize plugin components.
+   */
   private function init()
   {
     $this->settings = new Admin\SettingsManager();

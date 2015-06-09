@@ -41,6 +41,13 @@ class SettingsManager
     $this->renderer = new SettingsRenderer($this);
   }
 
+  /**
+   * Load a specific key from the plugin settings.
+   *
+   * @param   string  $key      The key to retrieve.
+   * @param   mixed   $default  The default value to use if the key isn't set.
+   * @return  mixed             The value of the setting, or $default if not set.
+   */
   public function getSetting($key, $default = null)
   {
     if (array_key_exists($key, $this->settings)) {
@@ -50,16 +57,37 @@ class SettingsManager
     return $default;
   }
 
+  /**
+   * Generate an ID value for a form field.
+   *
+   * @param   string  $key  The field key.
+   * @return  string        The generated attribute.
+   */
   public function getFieldID($key)
   {
     return sprintf('%s-%s', self::SETTING_BASENAME, $key);
   }
 
+  /**
+   * Generate a name value for a form field.
+   *
+   * @param   string  $key  The field key.
+   * @return  string        The generated attribute.
+   */
   public function getFieldName($key)
   {
     return sprintf('%s[%s]', self::SETTING_BASENAME, $key);
   }
 
+  /**
+   * Generate rendering arguments for a field.
+   *
+   * @param   string  $key          The field identifier.
+   * @param   string  $description  A description of the field.
+   * @param   array   $args         A list of additional arguments; will override any generated
+   *                                defaults.
+   * @return  array                 The parsed/processed argument list.
+   */
   public function getFieldArguments($key, $description = null, $args = null)
   {
     return array_replace_recursive([
@@ -74,6 +102,9 @@ class SettingsManager
 
   // -------------------------------------------------------------------------------------------
 
+  /**
+   * Register settings sections and fields.
+   */
   public function registerSettings()
   {
     register_setting(self::SETTING_GROUPNAME, self::SETTING_BASENAME);

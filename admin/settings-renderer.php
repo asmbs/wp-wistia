@@ -9,8 +9,16 @@ namespace Wistia\Admin;
  */
 class SettingsRenderer
 {
+  /**
+   * @var  SettingsManager
+   */
   protected $manager;
 
+  // -------------------------------------------------------------------------------------------
+
+  /**
+   * Constructor; initialize the renderer and link it to the settings manager.
+   */
   public function __construct(SettingsManager $manager)
   {
     $this->manager = $manager;
@@ -18,6 +26,9 @@ class SettingsRenderer
 
   // -------------------------------------------------------------------------------------------
   
+  /**
+   * Render the 'API Settings' section description.
+   */
   public function renderAPISettingsSection()
   {
     _e('Enter your account URL prefix and your upload API key so WordPress can connect to '
@@ -56,6 +67,9 @@ class SettingsRenderer
 
   // -------------------------------------------------------------------------------------------
 
+  /**
+   * Render the settings page
+   */
   public function renderSettingsPage()
   {
     if (!current_user_can('manage_options')) {
