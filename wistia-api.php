@@ -8,8 +8,7 @@
  * Author URI:  https://github.com/asmbs
  */
 
-namespace Wistia;
-
+namespace Wistia {
 
 /**
  * Plugin wrapper.
@@ -97,8 +96,10 @@ class PluginCore
     
     return plugin_dir_path(__FILE__) . $path;
   }
-
 }
+
+} // End Wistia namespace
+namespace {
 
 /**
  * Initialize or retrieve the instance of this plugin, or one of its services.
@@ -112,8 +113,8 @@ class PluginCore
 function wistia($service = '')
 {
   global $wistia;
-  if (!$wistia || !($wistia instanceof PluginCore)) {
-    $wistia = new PluginCore();
+  if (!$wistia || !($wistia instanceof Wistia\PluginCore)) {
+    $wistia = new Wistia\PluginCore();
   }
 
   if (!empty($service)) {
@@ -125,3 +126,5 @@ function wistia($service = '')
 
 // Initialize
 wistia();
+
+} // End global namespace
