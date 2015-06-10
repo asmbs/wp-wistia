@@ -30,6 +30,45 @@ class PluginCore
   // -------------------------------------------------------------------------------------------
 
   /**
+   * Constructor; loads the rest of the plugin.
+   */
+  public function __construct()
+  {
+    include_once 'admin/settings-manager.php';
+    include_once 'admin/settings-renderer.php';
+    include_once 'api/upload.php';
+
+    $this->init();
+  }
+
+  /**
+   * Initialize plugin components.
+   */
+  private function init()
+  {
+    $this->services['settings'] = new Admin\SettingsManager();
+    $this->services['api.upload'] = new API\UploadIntegration();
+  }
+
+  // -------------------------------------------------------------------------------------------
+
+  /**
+   * Get a reference to a plugin service.
+   *
+   * @param   string  $key  The service key.
+   * @return  mixed|null    A reference to the corresponding object, or null if one isn't
+   *                        defined.
+   */
+  public function getService($key)
+  {
+    if (array_key_exists($key, $this->services)) {
+      return $this->services[$key];
+    }
+
+    return null;
+  }
+
+  /**
    * Generate a URI/URL to a plugin resource.
    *
    * @param   string  $path  The optional path to a resource; if left empty, the base URI will
@@ -59,40 +98,28 @@ class PluginCore
     return plugin_dir_path(__FILE__) . $path;
   }
 
-  // -------------------------------------------------------------------------------------------
-
-  /**
-   * Constructor; loads the rest of the plugin.
-   */
-  public function __construct()
-  {
-    include_once 'admin/settings-manager.php';
-    include_once 'admin/settings-renderer.php';
-    include_once 'api/upload.php';
-
-    $this->init();
-  }
-
-  /**
-   * Initialize plugin components.
-   */
-  private function init()
-  {
-    $this->services['settings'] = new Admin\SettingsManager();
-    $this->services['api.upload'] = new API\UploadIntegration();
-  }
 }
 
 /**
- * Initialize or retrieve the instance of this plugin.
+ * Initialize or retrieve the instance of this plugin, or one of its services.
+ *
+ * @param   string  $service  An optional service key. If a key is supplied, the value of
+ *                            PluginCore::getService() will be returned (either a reference
+ *                            or null). If no key is supplied, the plugin itself is
+ *                            returned.
+ * @return  PluginCore|mixed|null
  */
-function wistia()
+function wistia($service = '')
 {
   global $wistia;
   if (!$wistia || !($wistia instanceof PluginCore)) {
     $wistia = new PluginCore();
   }
 
+  if (!empty($service)) {
+    return $wistia->getService($service);
+  }
+  
   return $wistia;
 }
 
