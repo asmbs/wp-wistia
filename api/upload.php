@@ -24,7 +24,7 @@ class UploadIntegration
   public function __construct(Base\PluginCore $container)
   {
     $this->container = $container;
-    
+
     add_action('wp_enqueue_scripts', [$this, 'registerScripts'], 1);
   }
 
@@ -40,5 +40,24 @@ class UploadIntegration
     $src = Base\wistia()->getUri($path);
 
     wp_register_script('wistia_uploads', $src, ['jquery'], Base\PluginCore::VERSION);
+  }
+
+  public function enqueueUploadScript()
+  {
+    // Enqueue the main script
+    add_action('wp_enqueue_scripts', function() {
+      wp_enqueue_script('wistia_uploads');
+    });
+
+    // Load the upload key
+    $settings = $this->container->getService('settings');
+    $uploadKey = $settings->getSetting('upload_key', false);
+    if ($uploadKey) {
+      add_action('wp_print_scripts', function() use ($uploadKey) {
+        ?>
+<script type="text/javascript">var $wk = '<?php echo $uploadKey ?>';</script>
+        <?
+      });
+    }
   }
 }
