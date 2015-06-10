@@ -12,10 +12,19 @@ use Wistia as Base;
 class UploadIntegration
 {
   /**
+   * @var  Base\PluginCore
+   */
+  protected $container;
+
+  // -------------------------------------------------------------------------------------------
+  
+  /**
    * Constructor; initialize the integration.
    */
-  public function __construct()
+  public function __construct(Base\PluginCore $container)
   {
+    $this->container = $container;
+    
     add_action('wp_enqueue_scripts', [$this, 'registerScripts'], 1);
   }
 

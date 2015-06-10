@@ -2,6 +2,8 @@
 
 namespace Wistia\Admin;
 
+use Wistia as Base;
+
 
 /**
  * Plugin settings manager.
@@ -21,6 +23,14 @@ class SettingsManager
    */
   protected $settings = [];
 
+  /**
+   * @var  Base\PluginCore
+   */
+  protected $container;
+
+  /**
+   * @var  SettingsRenderer
+   */
   protected $renderer;
 
   // -------------------------------------------------------------------------------------------
@@ -28,8 +38,10 @@ class SettingsManager
   /**
    * Constructor; hooks into the Settings API and loads existing plugin settings.
    */
-  public function __construct()
+  public function __construct(Base\PluginCore $container)
   {
+    $this->container = $container;
+
     // Hook into the Settings API
     add_action('admin_init', [$this, 'registerSettings']);
     add_action('admin_menu', [$this, 'addMenuPage']);

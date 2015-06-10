@@ -46,8 +46,8 @@ class PluginCore
    */
   private function init()
   {
-    $this->services['settings'] = new Admin\SettingsManager();
-    $this->services['api.upload'] = new API\UploadIntegration();
+    $this->services['settings'] = new Admin\SettingsManager($this);
+    $this->services['api.upload'] = new API\UploadIntegration($this);
   }
 
   // -------------------------------------------------------------------------------------------
@@ -119,7 +119,7 @@ function wistia($service = '')
   if (!empty($service)) {
     return $wistia->getService($service);
   }
-  
+
   return $wistia;
 }
 
