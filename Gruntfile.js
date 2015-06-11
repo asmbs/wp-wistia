@@ -13,7 +13,9 @@ module.exports = function(grunt) {
     uglify: {
       release: {
         options: {
-          mangle: true
+          mangle: {
+            except: ['Wistia']
+          }
         },
         files: {
           'js/api/upload.min.js': 'js/api/upload.js'
