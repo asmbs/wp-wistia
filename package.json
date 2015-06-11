@@ -1,0 +1,28 @@
+{
+  "name": "wp-wistia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Wistia upload integration for WordPress",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asmbs/wp-wistia.git"
+  },
+  "author": "Kyle Tucker <kyleatucker@gmail.com> (https://github.com/friartuck6000)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/asmbs/wp-wistia/issues"
+  },
+  "homepage": "https://github.com/asmbs/wp-wistia#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-search": "^0.1.7",
+    "grunt-text-replace": "^0.4.0",
+    "load-grunt-tasks": "^3.2.0",
+    "time-grunt": "^1.2.1"
+  }
+}
