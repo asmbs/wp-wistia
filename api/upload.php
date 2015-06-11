@@ -51,10 +51,14 @@ class UploadIntegration
     // Load the upload key
     $settings = $this->container->getService('settings');
     $uploadKey = $settings->getSetting('upload_key', false);
-    if ($uploadKey) {
-      add_action('wp_print_scripts', function() use ($uploadKey) {
+    $projectKey = $settings->getSetting('project_key', false);
+    if ($uploadKey && $projectKey) {
+      add_action('wp_print_scripts', function() use ($uploadKey, $projectKey) {
         ?>
-<script type="text/javascript">var $wk = '<?php echo $uploadKey ?>';</script>
+<script type="text/javascript">
+var $wk = '<?php echo $uploadKey ?>',
+    $wp = '<?php echo $projectKey ?>';
+</script>
         <?
       });
     }

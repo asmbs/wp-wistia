@@ -147,6 +147,20 @@ class SettingsManager
       )
     );
     add_settings_field(
+      'project_key',
+      __('Project Key'),
+      [$this->renderer, 'renderTextField'],
+      self::ADMIN_PAGE_ID,
+      'wistia_section-api_keys',
+      $this->getFieldArguments(
+        'project_key',
+        __('Enter the ID of the project that the Upload API should send videos to.'),
+        [
+          'classes' => 'regular-text'
+        ]
+      )
+    );
+    add_settings_field(
       'upload_key',
       __('Upload Key'),
       [$this->renderer, 'renderTextField'],
