@@ -175,6 +175,20 @@ class SettingsManager
         ]
       )
     );
+    add_settings_field(
+      'data_key',
+      __('Data API Key'),
+      [$this->renderer, 'renderTextField'],
+      self::ADMIN_PAGE_ID,
+      'wistia_section-api_keys',
+      $this->getFieldArguments(
+        'data_key',
+        __('This API key should have <strong>read and write</strong> permissions.'),
+        [
+          'classes' => 'regular-text',
+        ]
+      )
+    );
   }
 
   // -------------------------------------------------------------------------------------------
