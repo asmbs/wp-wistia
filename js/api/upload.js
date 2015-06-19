@@ -3,7 +3,7 @@
   /**
    * @class
    */
-  function Wistia() {}
+  w.Wistia = function() {};
   
   /**
    * The project key.
