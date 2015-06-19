@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Wistia API Integration
  * Plugin URI:  https://github.com/asmbs/wp-wistia-api
- * Version:     1.0.0
+ * Version:     1.0.1
  * Description: Integrates Wistia's developer APIs and provides scaffolding for video post types.
  * Author:      The A-TEAM
  * Author URI:  https://github.com/asmbs
@@ -19,7 +19,7 @@ class PluginCore
   /**
    * Plugin version.
    */
-  const VERSION = '1.0.0';
+  const VERSION = '1.0.1';
 
   /**
    * @var  array  Service container.
