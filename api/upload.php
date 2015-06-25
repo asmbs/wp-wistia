@@ -59,7 +59,7 @@ class UploadIntegration
 var $wk = '<?php echo $uploadKey ?>',
     $wp = '<?php echo $projectKey ?>';
 </script>
-        <?
+        <?php
       });
     }
   }
